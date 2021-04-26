@@ -30,6 +30,10 @@ type EpisodeProps = {
 export default function Episode({ episode }: EpisodeProps){
     const router = useRouter();
 
+    if(router.isFallback){
+        return <p>Carregando...</p>
+    }
+
     return (
         <div className={styles.episode}>
             <div className={styles.thumbnailContainer}>
@@ -57,8 +61,16 @@ export default function Episode({ episode }: EpisodeProps){
 
 // PARA PAGINAS NÃO ESTÁTICAS
 export const getStaticPaths: GetStaticPaths = async () => {
+    // BUSCAR CATEGORIAS MAIS ACESSADAS
+        
+
     return {
-        paths: [],
+        paths: [
+            {
+                params: { slug: 'a-importancia-da-contribuicao-em-open-source' }
+            }
+        ],
+        // INCREMENTAL STATIC REGENERATOR 
         fallback: 'blocking' 
     }
 }
