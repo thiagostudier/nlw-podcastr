@@ -4,40 +4,23 @@ import styles from '../styles/app.module.scss';
 
 import { Header } from '../components/Header';
 import { Player } from '../components/Player';
-import { PlayerContext } from '../contexts/PlayerContext';
-import { useState } from 'react';
+import { PlayerContextProvider } from '../contexts/PlayerContext';
 
 function MyApp({ Component, pageProps }) {
-
-  const [episodeList, setEpisodeList] = useState([]);
-  const [currentEpisodeIndex, setCurrentEpisodeIndex] = useState(0);
-  const [isPlaying, setIsPlaying] = useState(false);
-
-  function play(episode){
-    setEpisodeList([episode]);
-    setCurrentEpisodeIndex(0);
-    setIsPlaying(true);
-  }
-
-  function tooglePlay(){
-    setIsPlaying(!isPlaying);
-  }
-
-  function setPlayingState(state: boolean){
-    setIsPlaying(state);
-  }
-
-  // COLOCAR AS VARIAVEIS CONTEXTS POR VOLTA DA APLICAÇÃO, PARA QUE OS COMPONENTES POSSAM ACESSAR
   return (
-    <PlayerContext.Provider value={{ episodeList, currentEpisodeIndex, play, isPlaying, tooglePlay, setPlayingState }}>
+    <PlayerContextProvider>
       <div className={styles.wrapper}>
         <main>
-          <Header />
-          <Component {...pageProps} />
+          <div className="content">
+            <Header />
+            <Component {...pageProps} />
+          </div>
         </main>
-        <Player />
+        <div className={styles.player}>
+          <Player />
+        </div>
       </div>
-    </PlayerContext.Provider>
+    </PlayerContextProvider>
   )
 }
 

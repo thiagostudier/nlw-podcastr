@@ -2,13 +2,13 @@ import { format, parseISO } from 'date-fns';
 import ptBR from 'date-fns/locale/pt-BR';
 import Link from 'next/link';
 import { GetStaticPaths, GetStaticProps } from 'next';
-import { useRouter } from 'next/router'; 
 import { api } from '../../services/api';
 import { convertDurationToTimeString } from '../../utils/convertDurationToTimeString';
 import Image from 'next/image';
 
 import styles from './episode.module.scss';
-import { addISOWeekYears } from 'date-fns/esm';
+import { usePlayer } from '../../contexts/PlayerContext';
+import Head from 'next/head';
  
 // TIPAGEM
 type Episode = {
@@ -29,22 +29,24 @@ type EpisodeProps = {
 }
 
 export default function Episode({ episode }: EpisodeProps){
-    const router = useRouter();
-
-    if(router.isFallback){
-        return <p>Carregando...</p>
-    }
+    
+    const { play } = usePlayer();
 
     return (
         <div className={styles.episode}>
+
+            <Head>
+                <title>{episode.title} | Podcastr</title>
+            </Head>
+
             <div className={styles.thumbnailContainer}>
                 <Link href="/">
                     <button type="button">
                         <img src="/arrow-left.svg" alt="Voltar" />
                     </button>
                 </Link>
-                <Image width={700} height={160} src={episode.thumbnail} objectFit="cover" />
-                <button type="button">
+                <Image width={700} height={400} src={episode.thumbnail} objectFit="cover" />
+                <button type="button" onClick={() => {play(episode)}} >
                     <img src="/play.svg" alt="Tocas episódio" />
                 </button>
             </div>

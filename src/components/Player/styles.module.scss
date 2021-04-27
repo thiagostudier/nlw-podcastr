@@ -1,5 +1,5 @@
 .playerContainer{
-    width: 26.5rem;
+    width: 100%;
     height: 100vh;
     padding: 3rem 4rem;
     background: var(--purple-500);
@@ -106,10 +106,19 @@
 
         &:disabled{
             cursor: not-allowed;
+            opacity: .5;
         }
 
         &:hover:not(:disabled){
             filter: brightness(0.65);
+        }
+
+        &.isActive{
+            filter: invert(0.35) sepia(1) saturate(3) hue-rotate(100deg);
+        }
+
+        &.isActive:hover{
+            filter: brightness(.6) invert(0.35) sepia(1) saturate(3) hue-rotate(100deg);
         }
 
         &.playButton {
@@ -123,6 +132,18 @@
             }
         }
 
+    }
+
+}
+
+@media (max-width: 1170px){
+ 
+    .playerContainer{
+        padding: 3rem 2rem;
+    }
+    
+    .emptyPlayer {
+        padding: 2rem;
     }
 
 }

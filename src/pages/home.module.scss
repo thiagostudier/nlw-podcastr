@@ -11,13 +11,13 @@
 }
 
 .latestEpisodes{
-    ul{
+    .row{
         list-style: none;
         display: grid;
         grid-template-columns: repeat(2, 1fr);
         gap: 1.5rem;
         
-        li{
+        .itemLastEpisode{
             background: var(--white);
             border: 1px solid var(--gray-100);
             padding: 1.25rem;
@@ -25,9 +25,10 @@
             position: relative;
 
             display: flex;
-            align-items: center;
+            align-items: start;
 
             img{
+                min-width: 100px;
                 width: 6rem;
                 height: 6rem;
                 border-radius: 1rem;
@@ -50,13 +51,17 @@
                     }
                 }
 
-                p{
-                    font-size: 0.875rem;
-                    margin-top: 0.5rem;
-                    max-width: 70%;
-                    white-space: nowrap;
-                    overflow: hidden;
-                    text-overflow: ellipsis;
+                div{
+                    max-width: 100%;
+                    display: grid;
+                    p{
+                        font-size: 0.875rem;
+                        margin-top: 0.5rem;
+                        max-width: 70%;
+                        white-space: nowrap;
+                        overflow: hidden;
+                        text-overflow: ellipsis;
+                    }
                 }
 
                 span{
@@ -98,6 +103,7 @@
                 font-size: 0;
                 
                 img{
+                    min-width: unset !important;
                     width: 1.5rem;
                     height: 1.5rem;
                 }
@@ -173,6 +179,32 @@
 
             }
 
+        }
+    }
+}
+
+@media (max-width: 1400px){
+    .homepage {
+        padding: 0 1rem;
+
+        h2{
+            margin-top: 1.5rem;
+            margin-bottom: 1rem;
+        }
+    }
+}
+
+@media (max-width: 1170px){
+    .latestEpisodes{
+        .row{
+            display: block;
+            .itemLastEpisode{
+                margin-bottom: 20px;
+
+                &:last-child{
+                    margin-bottom: 0px;
+                }
+            }
         }
     }
 }
