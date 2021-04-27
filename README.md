@@ -4,7 +4,7 @@ Este projeto foi desenvolvido no Bootcamp NLW#5 (19/04/2021 - 23/04/2021).
 
 O projeto consome uma API (localhost:3333, "/server.json") com os dados dos Podcasts da Rocketseat. 
 
-Permite que o usuário possa dar play, pause, ouvir o próximo áudio, o anterior, embaralhar os podcasts e ativar um loop.
+Permite que o usuário dê play, pause, ouvir o próximo áudio, o anterior, embaralhar os podcasts e ativar um loop.
 
 O projeto inclui:
 
