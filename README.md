@@ -14,6 +14,10 @@ O projeto inclui:
 
 (c) SCSS
 
+### Projeto no ar
+
+https://podcastr-next-one.vercel.app
+
 ## Iniciando/Clonando projeto ...
 
 > _Observação: Necessário ter npm instalado
